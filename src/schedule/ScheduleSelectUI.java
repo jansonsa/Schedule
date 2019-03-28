@@ -50,14 +50,14 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         generatePeriodButton = new javax.swing.JButton();
-        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
-        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
+        comboStartDate = new datechooser.beans.DateChooserCombo();
+        comboEndDate = new datechooser.beans.DateChooserCombo();
         firstPanel = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         usagePanel = new javax.swing.JPanel();
         generateUsageButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboFacilities = new javax.swing.JComboBox<>();
+        comboClasses = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -225,8 +225,8 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(jLabel16))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(dateChooserCombo1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(dateChooserCombo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(comboEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         periodPanelLayout.setVerticalGroup(
@@ -235,11 +235,11 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(generatePeriodButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
@@ -277,14 +277,14 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All", "Tennis" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboFacilities.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All", "Tennis", "Football", "Swimming" }));
+        comboFacilities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboFacilitiesActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All", "Yoga" }));
+        comboClasses.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All", "Yoga", "Zumba", "Fitness" }));
 
         jLabel6.setText("Facilities");
 
@@ -302,9 +302,9 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(0, 373, Short.MAX_VALUE))
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboFacilities, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(generateUsageButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboClasses, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         usagePanelLayout.setVerticalGroup(
@@ -313,11 +313,11 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboClasses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(generateUsageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
@@ -406,9 +406,9 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
         generate(SELECTED.ME);
     }//GEN-LAST:event_generateMeButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboFacilitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFacilitiesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboFacilitiesActionPerformed
 
     private void generateUsageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateUsageButtonActionPerformed
         // TODO add your handling code here:
@@ -509,14 +509,19 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
         
         if(selected == SELECTED.ME){
             controller.openPersonSchedule(
-                    tfID.getText().toString(), 
-                    tfFirstName.getText().toString(), 
-                    tfLastName.getText().toString(), 
+                    tfID.getText(), 
+                    tfFirstName.getText(), 
+                    tfLastName.getText(), 
                     period);
-        }else if(selected == SELECTED.PERIOD){
-            
+        } else if(selected == SELECTED.PERIOD){
+            controller.openPeriodSchedule(
+                    comboStartDate.getSelectedDate(), 
+                    comboEndDate.getSelectedDate());
         } else if(selected == SELECTED.USAGE){
-            
+            controller.openUsageSchedule(
+                    (String)comboFacilities.getSelectedItem(), 
+                    (String)comboClasses.getSelectedItem(), 
+                    period);
         }
     } 
     
@@ -524,14 +529,14 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private datechooser.beans.DateChooserCombo dateChooserCombo1;
-    private datechooser.beans.DateChooserCombo dateChooserCombo2;
+    private javax.swing.JComboBox<String> comboClasses;
+    private datechooser.beans.DateChooserCombo comboEndDate;
+    private javax.swing.JComboBox<String> comboFacilities;
+    private datechooser.beans.DateChooserCombo comboStartDate;
     private javax.swing.JPanel firstPanel;
     private javax.swing.JButton generateMeButton;
     private javax.swing.JButton generatePeriodButton;
     private javax.swing.JButton generateUsageButton;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;

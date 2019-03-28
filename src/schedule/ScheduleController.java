@@ -85,16 +85,122 @@ public class ScheduleController {
             bookings.addAll(bookingRepo.read(conn, null, startTime, endTime, instructor.getID()));
         });
         
+        if(bookings.isEmpty()){
+            showMessageDialog(null, "Nothing to show");
+            return;
+        }
+        
         new ScheduleUI().start(bookings);
         
     }
 
-    public void openPeriodSchedule() {
-
+    public void openPeriodSchedule(Calendar startCal, Calendar endCal) {
+        if(startCal.getTimeInMillis() > endCal.getTimeInMillis()){
+            showMessageDialog(null, "End date can't be before Start date");
+            return;
+        }
+        BookingRepo bookingRepo = new BookingRepo();
+        
+        //Set end time to be at the end of the day to show all events
+        //including the last day
+        endCal.set(Calendar.HOUR_OF_DAY, 23);
+        endCal.set(Calendar.MINUTE, 59);
+        endCal.set(Calendar.SECOND, 59);
+        
+        Timestamp startTime = new Timestamp(startCal.getTimeInMillis());
+        Timestamp endTime = new Timestamp(endCal.getTimeInMillis());
+        
+        ArrayList<Booking> bookings = bookingRepo.read(conn, null, startTime, endTime, null);
+        
+        if(bookings.isEmpty()){
+            showMessageDialog(null, "Nothing to show");
+            return;
+        }
+        
+        new ScheduleUI().start(bookings);
     }
 
-    public void openUsageSchedule() {
-
+    public void openUsageSchedule(String chosenFacility, String chosenClass, PERIOD period) {
+        BookingRepo bookingRepo = new BookingRepo();
+        ArrayList<Booking> bookings = new ArrayList<>();
+        
+        Calendar cal = Calendar.getInstance();
+        Timestamp startTime = new Timestamp(cal.getTimeInMillis());
+        //Add appropriate interval between start and end time
+        cal = addInterval(cal, period);
+        Timestamp endTime = new Timestamp(cal.getTimeInMillis());
+        
+        switch (chosenFacility) {
+            case "All":
+                bookings.addAll(
+                        bookingRepo.read(
+                                conn, 
+                                TYPE.FACILITY.getValue(), 
+                                startTime, 
+                                endTime, 
+                                null));
+                break;
+            case "None":
+                break;
+            default:
+                bookings.addAll(
+                        filterByTitle(
+                                bookingRepo.read(
+                                        conn, 
+                                        TYPE.FACILITY.getValue(), 
+                                        startTime, 
+                                        endTime, 
+                                        null), 
+                                chosenFacility));
+                break;
+        }
+        switch (chosenClass) {
+            case "All":
+                bookings.addAll(
+                        bookingRepo.read(
+                                conn, 
+                                TYPE.CLASS.getValue(), 
+                                startTime, 
+                                endTime, 
+                                null));
+                break;
+            case "None":
+                break;
+            default:
+                bookings.addAll(
+                        filterByTitle(
+                                bookingRepo.read(
+                                        conn, 
+                                        TYPE.CLASS.getValue(), 
+                                        startTime, 
+                                        endTime, 
+                                        null), 
+                                chosenClass));
+                break;
+        }
+        
+        if(bookings.isEmpty()){
+            showMessageDialog(null, "Nothing to show");
+            return;
+        }
+        
+        new ScheduleUI().start(bookings);
+    }
+    
+    /**
+     * Filter bookings by title
+     * @param list List of bookings
+     * @param title Title to match
+     * @return List of bookings that matched the title
+     */
+    public ArrayList<Booking> filterByTitle(ArrayList<Booking> list, String title){
+        ArrayList<Booking> filteredList = new ArrayList<>();
+        list.forEach((booking)->{
+            if(booking.getTitle().equals(title)){
+                filteredList.add(booking);
+            }
+        });
+        return filteredList;
     }
     
     /**
@@ -103,7 +209,7 @@ public class ScheduleController {
      * @param period PERIOD of either week, month or year
      * @return updated calendar instance
      */
-    private Calendar addInterval(Calendar cal, PERIOD period){
+    public Calendar addInterval(Calendar cal, PERIOD period){
         if(null != period)
             switch (period) {
             case WEEK:
@@ -128,7 +234,7 @@ public class ScheduleController {
      * @param text string to convert
      * @return null or string
      */
-    private String convertToNullIfEmpty(String text) {
+    public String convertToNullIfEmpty(String text) {
         if (text != null) {
             text = text.trim();
             if ("".equals(text)) {
@@ -145,7 +251,8 @@ public class ScheduleController {
      * @param id string to convert
      * @return positive integer or null
      */
-    private Integer convertToPositiveInt(String id) {
+    public Integer convertToPositiveInt(String id) {
+        id = id.trim();
         if (!isNumeric(id)) {
             return null;
         }
@@ -162,7 +269,7 @@ public class ScheduleController {
      * @param str string to check
      * @return true if numeric
      */
-    private boolean isNumeric(String str) {
+    public boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;

@@ -330,8 +330,8 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="dateChooserCombo1" alignment="0" pref="422" max="32767" attributes="0"/>
-                      <Component id="dateChooserCombo2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboStartDate" alignment="0" pref="422" max="32767" attributes="0"/>
+                      <Component id="comboEndDate" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -343,11 +343,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="dateChooserCombo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboStartDate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="dateChooserCombo2" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboEndDate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="generatePeriodButton" pref="31" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -374,9 +374,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generatePeriodButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCombo1">
+        <Component class="datechooser.beans.DateChooserCombo" name="comboStartDate">
         </Component>
-        <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCombo2">
+        <Component class="datechooser.beans.DateChooserCombo" name="comboEndDate">
         </Component>
       </SubComponents>
     </Container>
@@ -445,9 +445,9 @@
                           </Group>
                           <EmptySpace min="0" pref="373" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboFacilities" alignment="0" max="32767" attributes="0"/>
                       <Component id="generateUsageButton" alignment="1" pref="422" max="32767" attributes="0"/>
-                      <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboClasses" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -459,11 +459,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboFacilities" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboClasses" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="generateUsageButton" pref="31" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -480,30 +480,34 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateUsageButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="comboFacilities">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="5">
                 <StringItem index="0" value="None"/>
                 <StringItem index="1" value="All"/>
                 <StringItem index="2" value="Tennis"/>
+                <StringItem index="3" value="Football"/>
+                <StringItem index="4" value="Swimming"/>
               </StringArray>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboFacilitiesActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="comboClasses">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="5">
                 <StringItem index="0" value="None"/>
                 <StringItem index="1" value="All"/>
                 <StringItem index="2" value="Yoga"/>
+                <StringItem index="3" value="Zumba"/>
+                <StringItem index="4" value="Fitness"/>
               </StringArray>
             </Property>
           </Properties>

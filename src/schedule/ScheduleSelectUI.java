@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package schedule;
 
@@ -12,7 +8,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author DELL
+ * @author Andris Jansons
  */
 public class ScheduleSelectUI extends javax.swing.JFrame {
 
@@ -43,12 +39,12 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
         usageButton = new javax.swing.JButton();
         mePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfFirstName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tfID = new javax.swing.JTextField();
         generateMeButton = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        tfLastName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         periodPanel = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -97,7 +93,7 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(periodComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1374, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +108,7 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        meButton.setText("By Person");
+        meButton.setText("By Instructor");
         meButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meButtonActionPerformed(evt);
@@ -160,18 +156,18 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
             .addGroup(mePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2)
+                    .addComponent(tfID)
                     .addComponent(generateMeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mePanelLayout.createSequentialGroup()
                         .addGroup(mePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(mePanelLayout.createSequentialGroup()
                                 .addGroup(mePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(mePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -189,14 +185,14 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(generateMeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
@@ -351,7 +347,7 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
                         .addComponent(usagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(mePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(14, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {meButton, periodButton, usageButton});
@@ -421,6 +417,18 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
 
     private void periodComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodComboBoxActionPerformed
         // TODO add your handling code here:
+        String item = (String)periodComboBox.getSelectedItem();
+        switch(item){
+            case "Next week":
+                period = PERIOD.WEEK;
+                break;
+            case "Next month":
+                period = PERIOD.MONTH;
+                break;
+            case "Next year":
+                period = PERIOD.YEAR;
+                break;
+        }
     }//GEN-LAST:event_periodComboBoxActionPerformed
 
     /**
@@ -459,10 +467,14 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
         });
         
     }
+    
+    ScheduleController controller;
     List<JPanel> panels = new ArrayList();
+    PERIOD period = PERIOD.WEEK;
     enum SELECTED {ME, PERIOD, USAGE};
         
     public void start(){
+        controller = ScheduleController.getInstance();
         setVisible(true);
         addPanels();
         loadPanel(firstPanel);
@@ -495,10 +507,12 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
     
     private void generate(SELECTED selected){
         
-        new ScheduleUI().start();
-        
         if(selected == SELECTED.ME){
-            
+            controller.openPersonSchedule(
+                    tfID.getText().toString(), 
+                    tfFirstName.getText().toString(), 
+                    tfLastName.getText().toString(), 
+                    period);
         }else if(selected == SELECTED.PERIOD){
             
         } else if(selected == SELECTED.USAGE){
@@ -530,15 +544,15 @@ public class ScheduleSelectUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton meButton;
     private javax.swing.JPanel mePanel;
     private javax.swing.JButton periodButton;
     private javax.swing.JComboBox<String> periodComboBox;
     private javax.swing.JLabel periodLabel;
     private javax.swing.JPanel periodPanel;
+    private javax.swing.JTextField tfFirstName;
+    private javax.swing.JTextField tfID;
+    private javax.swing.JTextField tfLastName;
     private javax.swing.JButton usageButton;
     private javax.swing.JPanel usagePanel;
     // End of variables declaration//GEN-END:variables

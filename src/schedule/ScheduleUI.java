@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package schedule;
 
 import java.awt.BorderLayout;
@@ -11,19 +7,26 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
+import schedule.models.Booking;
+import schedule.models.TYPE;
 
 /**
  *
- * @author DELL
+ * @author Andris Jansons
  */
 public class ScheduleUI extends javax.swing.JFrame {
 
@@ -187,38 +190,71 @@ public class ScheduleUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ScheduleUI().start();
+                new ScheduleUI().start(new ArrayList<>());
             }
         });
     }
     private JPanel mainList;
-    private int i;
+    private ArrayList<Booking> bookings;
+    
 
-    public void start() {
+    public void start(ArrayList<Booking> bookings) {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         setVisible(true);
-
+        
+        this.bookings = bookings;
+        
+        initializeLayout();
+        sortSchedule();
+        populateSchedule();
+        
+    }
+    
+    private void sortSchedule(){
+        Collections.sort(bookings);
+    }
+    
+    private void initializeLayout(){
         mainList = new JPanel();
         mainList.setLayout(new GridBagLayout());
         JScrollPane scrollPane = new JScrollPane(mainList);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         mainPanel.add(scrollPane);
-        for (int i = 0; i < 10; i++) {
-            if (i % 2 == 0) {
+    }
+    
+    private void populateSchedule(){
+        //Used to format date
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd MMM, yyyy");	
+        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
+        //Used to keep track of which day is currently populated
+        String activeDate = "";
+        for (int i = 0; i < bookings.size(); i++) {
+            Booking booking = bookings.get(i);
+            
+            Calendar startTime = Calendar.getInstance();
+            startTime.setTimeInMillis(booking.getStart().getTime());
+            Calendar endTime = Calendar.getInstance();
+            endTime.setTimeInMillis(booking.getFinish().getTime());
+            
+            String thisDate = sdfDate.format(startTime.getTime());
+            
+            //Show date only if it's a new day
+            if (!activeDate.equals(thisDate)) {
                 mainList.add(createSeperator(), gbc());
-                JLabel dateLabel = createDateLabel(i + " Feb, Wed");
+                JLabel dateLabel = createDateLabel(thisDate);
                 mainList.add(dateLabel, gbc());
             }
-            JLabel locationLabel = createLocationLabel("Main Hall");
-            JLabel spacesLabel = createSpacesLabel("2 Spots left");
-            JLabel titleLabel = createTitleLabel("Tennis");
-            JLabel timeLabel = createTimeLabel("9:00 - 11:00");
-            JPanel itemPanel = createItemPanel(timeLabel, titleLabel, locationLabel, spacesLabel, new Color(102, 102, 255));
-            if (i % 3 == 0) {
-                titleLabel = createTitleLabel("Zumba");
-                timeLabel = createTimeLabel("13:00 - 15:00");
-                itemPanel = createItemPanel(timeLabel, titleLabel, locationLabel, spacesLabel, new Color(255, 100, 40));
-            }
+            
+            activeDate = thisDate;
+            
+            JLabel locationLabel = createLocationLabel(booking.getLocation());
+            JLabel spacesLabel = createSpacesLabel(booking.getSpaces() != 0 ? booking.getSpaces() + " Spots left" : "Full");
+            JLabel titleLabel = createTitleLabel(booking.getTitle());
+            JLabel timeLabel = createTimeLabel(sdfTime.format(startTime.getTime()) + " - " + sdfTime.format(endTime.getTime()));
+            JPanel itemPanel = createItemPanel(timeLabel, titleLabel, locationLabel, spacesLabel, 
+                    booking.getType() == TYPE.FACILITY ? new Color(102, 102, 255) : new Color(255,100,40));
 
             mainList.add(itemPanel, gbc());
             mainList.revalidate();
